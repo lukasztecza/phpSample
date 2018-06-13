@@ -8,5 +8,6 @@
     "databasePassword": "",
 
     "inMemoryUsername": "",
-    "inMemoryPasswordHash": ""
+    "inMemoryPasswordHash": "",
+    "wow": ""
 }

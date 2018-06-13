@@ -1,11 +1,19 @@
 [
     {
+        "path": "/",
+        "methods": ["GET"],
+        "controller": "fileController",
+        "action": "list"
+    },
+    {
         "path": "/login",
+        "methods": ["GET", "POST"],
         "controller": "authenticationController",
         "action": "login"
     },
     {
         "path": "/logout",
+        "methods": ["GET"],
         "controller": "authenticationController",
         "action": "logout"
     },
@@ -17,7 +25,7 @@
     },
     {
         "path": "/file",
-        "methods": ["GET", "POST"],
+        "methods": ["GET"],
         "controller": "fileController",
         "action": "list"
     },
