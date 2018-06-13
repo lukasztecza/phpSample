@@ -3,10 +3,10 @@
         var input = document.createElement("input"),
             br = document.createElement("br"),
             div = document.querySelector("form > div");
-        input.type = "text";
-        input.name = "items[]";
-        div.appendChild(input);
+        input.type = "file";
+        input.name = "files[]";
         div.appendChild(br);
+        div.appendChild(input);
     }
     document.querySelector("input[type=button]").addEventListener("click", appendInput);
 })();

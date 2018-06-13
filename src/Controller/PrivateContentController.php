@@ -1,13 +1,13 @@
 <?php
 namespace PhpSample\Controller;
 
-use LightApp\Controller\ControllerInterface;
+use LightApp\Controller\ControllerAbstract;
 use LightApp\Model\Service\SessionService;
 use PhpSample\Model\Service\FileService;
 use LightApp\Model\System\Request;
 use LightApp\Model\System\Response;
 
-class PrivateContentController implements ControllerInterface
+class PrivateContentController extends ControllerAbstract
 {
     private $sessionService;
     private $fileService;

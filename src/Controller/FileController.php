@@ -1,7 +1,7 @@
 <?php
 namespace PhpSample\Controller;
 
-use LightApp\Controller\ControllerInterface;
+use LightApp\Controller\ControllerAbstract;
 use LightApp\Model\System\Request;
 use LightApp\Model\System\Response;
 use PhpSample\Model\Service\FileService;
@@ -10,7 +10,7 @@ use LightApp\Model\Validator\ValidatorFactory;
 use PhpSample\Model\Validator\FilesUploadValidator;
 use PhpSample\Model\Validator\FilesDeleteValidator;
 
-class FileController implements ControllerInterface
+class FileController extends ControllerAbstract
 {
     private $fileService;
     private $sessionService;
@@ -27,17 +27,18 @@ class FileController implements ControllerInterface
         $validator = $this->validatorFactory->create(FilesUploadValidator::class);
         if ($request->getMethod() === 'POST') {
             if ($validator->check($request)) {
-                $files = $request->getFiles(['someFile']);
+                $files = $request->getFiles(['files'])['files'];
                 $result = $this->fileService->uploadFiles($files, (bool)$request->getPayload(['public'])['public']);
                 if (!empty($result)) {
                     $this->sessionService->set(['flash' => ['type' => 'success', 'text' => 'Files are added']]);
-                    return new Response(null, [], [], ['Location' => '/file']);
+
+                    return $this->redirectResponse('/file');
                 }
                 $error = 'Failed to upload files';
             }
         }
 
-        return new Response(
+        return $this->htmlResponse(
             'files/upload.php',
             ['error' => isset($error) ? $error : $validator->getError(), 'csrfToken' => $validator->getCsrfToken()],
             ['error' => 'html']
@@ -46,7 +47,7 @@ class FileController implements ControllerInterface
 
     public function list(Request $request) : Response
     {
-        return new Response(
+        return $this->htmlResponse(
             'files/list.php',
             ['types' => $this->fileService->getTypes(), 'flash' => $this->sessionService->get(['flash'], true)['flash']],
             ['types' => 'html', 'flash' => 'html']
@@ -69,7 +70,7 @@ class FileController implements ControllerInterface
                         $this->sessionService->set(['flash' => ['type' => 'error', 'text' => 'Files are not deleted']]);
                     }
 
-                    return new Response(null, [], [], ['Location' => '/file/list/' . (int)$type . '/' . (int)$page]);
+                    return $this->redirectResponse('/file/list/' . (int) $type . '/' . (int) $page);
                 }
             }
         }
@@ -77,7 +78,7 @@ class FileController implements ControllerInterface
         $filesPack = $this->fileService->getByType($type, $page);
         if (empty($filesPack['files'])) {
             $this->sessionService->set(['flash' => ['type' => 'error', 'text' => 'There is no files under selected category and page']]);
-            return new Response(null, [], [], ['Location' => '/file']);
+            return $this->redirectResponse('/file');
         }
 
         $rules = ['error' => 'html', 'flash' => 'html'];
@@ -85,7 +86,7 @@ class FileController implements ControllerInterface
             $rules['files.' . $key . '.name'] = 'file';
         }
 
-        return new Response(
+        return $this->htmlResponse(
             $this->fileService->isTypeImage($type) ? 'files/listImages.php' : 'files/listFiles.php',
             [
                 'files' => $filesPack['files'],
