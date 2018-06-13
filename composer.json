@@ -9,6 +9,9 @@
     "require": {
         "lukasztecza/lightApp": "1.*"
     },
+    "require-dev": {
+        "codeception/codeception": "2.3.*"
+    },
     "autoload": {
         "psr-4": { "PhpSample\\": "src/" }
     }

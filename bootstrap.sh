@@ -139,7 +139,5 @@ if ! [ -L /usr/bin/composer ]; then
 fi
 composer install --no-plugins --no-scripts
 
-#@TODO install webpack
-
 # Information for user
 echo "[Info] Your project will be accessible via url: http://$HOST:$PORT"

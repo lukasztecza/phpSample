@@ -1,0 +1,12 @@
+{
+    "environment": "",
+    "databaseEngine": "",
+    "databaseHost": "",
+    "databasePort": "",
+    "databaseName": "",
+    "databaseUser": "",
+    "databasePassword": "",
+
+    "inMemoryUsername": "",
+    "inMemoryPasswordHash": ""
+}
