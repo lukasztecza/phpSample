@@ -1,0 +1,84 @@
+{
+    "outputMiddleware": {
+        "class": "PhpSample\\Model\\Middleware\\OutputMiddleware",
+        "inject": [
+            "@securityMiddleware@",
+            "%defaultContentType%",
+            "@fileService@",
+            "%assetsVersion%",
+            "@sessionService@"
+        ]
+    },
+    "securityMiddleware": {
+        "class": "LightApp\\Model\\Middleware\\SecurityMiddleware",
+        "inject": [
+            "@controllerMiddleware@",
+            "%securityList%",
+            "@sessionService@"
+        ]
+    },
+    "controllerMiddleware": {
+        "class": "LightApp\\Model\\Middleware\\ControllerMiddleware",
+        "inject": [
+            "%routedController%",
+            "%routedAction%"
+        ]
+    },
+    "fileController": {
+        "class": "PhpSample\\Controller\\FileController",
+        "inject": [
+            "@fileService@",
+            "@validatorFactory@",
+            "@sessionService@"
+        ]
+    },
+    "authenticationController": {
+        "class": "PhpSample\\Controller\\AuthenticationController",
+        "inject": [
+            "@sessionService@",
+            "@validatorFactory@",
+            "%inMemoryUsername%",
+            "%inMemoryPasswordHash%"
+        ]
+    },
+    "privateContentController": {
+        "class": "PhpSample\\Controller\\PrivateContentController",
+        "inject": [
+            "@sessionService@",
+            "@fileService@"
+        ]
+    },
+    "sessionService": {
+        "class": "LightApp\\Model\\Service\\SessionService"
+    },
+    "fileService": {
+        "class": "PhpSample\\Model\\Service\\FileService",
+        "inject": [
+            "@fileRepository@"
+        ]
+    },
+    "validatorFactory": {
+        "class": "LightApp\\Model\\Validator\\ValidatorFactory",
+        "inject": [
+            "@sessionService@"
+        ]
+    },
+    "writeConnection": {
+        "class": "LightApp\\Model\\Repository\\PdoDatabaseConnection",
+        "inject": [
+            "%databaseEngine%",
+            "%databaseHost%",
+            "%databasePort%",
+            "%databaseName%",
+            "%databaseUser%",
+            "%databasePassword%"
+        ]
+    },
+    "fileRepository" : {
+        "class": "PhpSample\\Model\\Repository\\FileRepository",
+        "inject": [
+            "@writeConnection@",
+            "@writeConnection@"
+        ]
+    }
+}

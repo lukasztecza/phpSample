@@ -1,0 +1,15 @@
+{
+    "name": "lukasztecza/phpSample",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/lukasztecza/lightApp"
+        }
+    ],
+    "require": {
+        "lukasztecza/lightApp": "1.*"
+    },
+    "autoload": {
+        "psr-4": { "PhpSample\\": "src/" }
+    }
+}

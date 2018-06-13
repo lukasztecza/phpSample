@@ -1,0 +1,21 @@
+{
+    "defaultContentType": "text/html",
+    "applicationStartingPoint": "outputMiddleware",
+    "assetsVersion": "1",
+    "securityList": [
+        {
+            "route": "/private/upload/{directory}/{file}",
+            "methods": ["GET"],
+            "allow": ["ROLE_USER"]
+        },
+        {
+            "route": "/file/add",
+            "allow": ["ROLE_USER"]
+        },
+        {
+            "route": "/file/list/{type}/{page}",
+            "methods": ["POST"],
+            "allow": ["ROLE_USER"]
+        }
+    ]
+}

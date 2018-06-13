@@ -1,0 +1,12 @@
+{
+    "environment": "dev",
+    "databaseEngine": "mysql",
+    "databaseHost": "127.0.0.1",
+    "databasePort": "3306",
+    "databaseName": "fx_bot",
+    "databaseUser": "user",
+    "databasePassword": "pass",
+
+    "inMemoryUsername": "user",
+    "inMemoryPasswordHash": "$2y$12$mHx7zh06OUGvBrOaoaTgsesPZrGcNbPXQLgea4P865hMOW7LOOwN2"
+}
