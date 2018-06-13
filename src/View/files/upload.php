@@ -14,4 +14,5 @@
     <input type="hidden" name="csrfToken" value="<?php echo $csrfToken; ?>" /><br />
     <input type="submit" />
 </form>
+<script src="/assets/js/core.js<?php echo $assetsVersioning; ?>"></script>
 <?php include(__DIR__ . '/../common/foot.php'); ?>
