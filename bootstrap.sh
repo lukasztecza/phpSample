@@ -9,7 +9,7 @@ MYSQL_ROOT_PASSWORD=pass
 MYSQL_USER=user
 MYSQL_USER_PASSWORD=pass
 MYSQL_HOST=localhost
-MYSQL_DATABASE=fx_bot
+MYSQL_DATABASE=some_db
 PHP_VERSION=7.2
 
 # Export variable to fix "dpkg-preconfigure: unable to re-open..." error
