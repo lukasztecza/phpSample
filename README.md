@@ -18,6 +18,6 @@ databaseName: some_db
 databaseUser: user
 databasePassword: pass
 inMemoryUsername: user
-inMemoryPasswordHash: pass
+inMemoryPasswordHash: $2y$12$rwdWMOl8tITwrRpbJfIrDeptPPT7QoxiB5msiNrJ3G1Yf5rwrdQge //it is hashed value: pass
 ```
 - app should be accessible at `http://localhost:8080/`
